@@ -14,28 +14,17 @@ public class US_02_Login extends BaseDriver {
         driver.get("https://demo.nopcommerce.com");
         driver.manage().window().maximize();
 
-        WebElement loginClik = isClickable(By.xpath("//a[@class='ico-login']"));
-        loginClik.click();
+        WebElement loginClick = isClickable(By.xpath("//a[@class='ico-login']"));
+        loginClick.click();
 
         WebElement email = isClickable(By.xpath("//input[@class='email']"));
-        email.click();
         email.sendKeys("");
 
-        WebElement password = isClickable(By.xpath("//input[@class='password']"));
-        password.click();
+        WebElement password = driver.findElement(By.xpath("//input[@class='password']"));
         password.sendKeys("");
 
-        WebElement logBttn = isClickable(By.xpath("//button[@class='button-1 login-button']"));
-        logBttn.click();
-
-        Bekle(5);
-        driver.quit();
-
-
-
-
-
-
+        WebElement loginButton = driver.findElement(By.xpath("//button[@class='button-1 login-button']"));
+        loginButton.click();
 
     }
 }
