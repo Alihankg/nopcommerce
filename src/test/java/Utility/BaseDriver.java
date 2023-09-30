@@ -22,7 +22,7 @@ public class BaseDriver {
     public static WebDriver driver; // SingletonDriver method
     public static WebDriverWait wait;
 
-    @BeforeSuite
+    @BeforeTest
     public void baslangicIslemleri(){
         Logger logger= Logger.getLogger(""); // output yapılan logları al.
         logger.setLevel(Level.SEVERE); // sadece ERROR ları göster
@@ -34,7 +34,7 @@ public class BaseDriver {
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     }
 
-    @AfterSuite
+    @AfterTest
     public void bitisIslemleri(){ // tearDown
         MyFunc.Bekle(5);
         driver.quit();
