@@ -1,0 +1,39 @@
+Index: src/test/java/helpers/POM.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package helpers;\r\n\r\nimport Utility.BaseDriver;\r\nimport org.openqa.selenium.WebElement;\r\nimport org.openqa.selenium.support.FindBy;\r\nimport org.openqa.selenium.support.PageFactory;\r\n\r\npublic class POM {\r\n    public POM() {\r\n        PageFactory.initElements(BaseDriver.driver, this);\r\n    }\r\n\r\n    @FindBy(xpath = \"//a[@class='ico-login']\")\r\n    public WebElement loginPage;\r\n\r\n    @FindBy(xpath = \"//input[@class='email']\")\r\n    public WebElement email;\r\n\r\n    @FindBy(xpath = \"//input[@class='password']\")\r\n    public WebElement password;\r\n\r\n    @FindBy(xpath = \"//button[@class='button-1 login-button']\")\r\n    public WebElement loginButton;\r\n\r\n    @FindBy(xpath = \"//a[@class='ico-logout']\")\r\n    public WebElement logoutButton;\r\n\r\n    @FindBy(xpath = \"//a[@class='ico-account']\")\r\n    public WebElement myAccountButton;\r\n\r\n    @FindBy(xpath = \"//div[@class='message-error validation-summary-errors']\")\r\n    public WebElement loginErrorMessage;\r\n}\r\n
+===================================================================
+diff --git a/src/test/java/helpers/POM.java b/src/test/java/helpers/POM.java
+--- a/src/test/java/helpers/POM.java	
++++ b/src/test/java/helpers/POM.java	
+@@ -30,4 +30,30 @@
+ 
+     @FindBy(xpath = "//div[@class='message-error validation-summary-errors']")
+     public WebElement loginErrorMessage;
++
++    @FindBy(css = "[id='giftcard_43_SenderEmail']")
++    public WebElement YourEmail;
++    @FindBy(linkText = "Gift Cards")
++    public WebElement GiftCarts;
++    @FindBy(xpath = "(//div[@class='picture'])[1]")
++    public WebElement picture;
++
++    @FindBy(css = "[id='giftcard_43_RecipientName']")
++    public WebElement Name;
++    @FindBy(css = "[id='giftcard_43_RecipientName']")
++    public WebElement Email;
++
++    @FindBy(css = "[id='giftcard_43_SenderName']")
++    public WebElement YourName;
++    @FindBy(css = "[id='giftcard_43_Message']")
++    public WebElement Message;
++    @FindBy(css = "[id='add-to-cart-button-43']")
++    public WebElement AdToCard;
++
++
++
++    @FindBy(linkText = "Computers")
++    public WebElement computers;
++
++
+ }

@@ -1,0 +1,73 @@
+Index: src/test/java/POM.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import Utility.BaseDriver;\r\nimport org.openqa.selenium.support.PageFactory;\r\n\r\npublic class POM {\r\n    public POM() {\r\n        PageFactory.initElements(BaseDriver.driver, this);\r\n    }\r\n}\r\n
+===================================================================
+diff --git a/src/test/java/POM.java b/src/test/java/POM.java
+--- a/src/test/java/POM.java	
++++ b/src/test/java/POM.java	
+@@ -1,8 +1,64 @@
+ import Utility.BaseDriver;
++import org.openqa.selenium.By;
++import org.openqa.selenium.WebElement;
++import org.openqa.selenium.support.*;
+ import org.openqa.selenium.support.PageFactory;
++import org.testng.annotations.Test;
++
++import java.util.List;
+ 
+ public class POM {
+     public POM() {
+         PageFactory.initElements(BaseDriver.driver, this);
+     }
++    @FindBy(css = "[class='top-menu notmobile']>li>a")
++    public List<WebElement> TabMenu;
++
++    @FindBy(css ="[class='top-menu notmobile']>li>ul>li" )
++    public List<WebElement> TabAlt;
++
++
++
++    @FindBy(linkText = "Log in")
++    public WebElement login;
++    @FindBy(id = "Email")
++    public WebElement email;
++    @FindBy(id = "Password")
++    public WebElement password;
++    @FindBy(css = "[class='button-1 login-button']")
++    public WebElement loginButton;
++    @FindBy(linkText = "Computers")
++    public WebElement computers;
++    @FindBy(linkText = "Notebooks")
++    public WebElement notebooks;
++    @FindBy(css = "[class='product-title'] a")
++    public List<WebElement> tabProducts;
++    @FindBy(id = "small-searchterms")
++    public WebElement search;
++    @FindBy(css = "[class='button-1 search-box-button']")
++    public WebElement searchButton;
++    @FindBy(css = "[class='product-title'] a")
++    public List<WebElement> searchProducts;////random al
++
++
++    @FindBy(css = "[class='top-menu notmobile']>li")
++    private List<WebElement>tabMenu;
++    @FindBy(linkText = "Electronics")
++    private WebElement electronics;
++
++    @FindBy(xpath = "//*[text()='Apparel ']")
++    private WebElement apparel;
++
++
++    public WebElement getElectronics() {
++        return electronics;
++    }
++
++    public WebElement getComputers() {
++        return computers;
++    }
++
++    public WebElement getApparel() {
++        return apparel;
++    }
+ }
