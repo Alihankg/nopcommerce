@@ -2,6 +2,7 @@ package tests;
 
 import Utility.BaseDriver;
 import helpers.POM;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class US_02_Login extends BaseDriver {
@@ -14,12 +15,12 @@ public class US_02_Login extends BaseDriver {
         pom = new POM();
 
         driver.get("https://demo.nopcommerce.com");
-        driver.manage().window().maximize();
 
         pom.loginPage.click();
-        pom.getEmail().sendKeys("testng1@gmail.com");
-        pom.getPassword().sendKeys("123qweasd");
-        pom.getLoginButton().click();
+        pom.email.sendKeys("tester@tester.tester.com");
+        pom.password.sendKeys("secret");
+        pom.loginButton.click();
+        Assert.assertTrue(pom.myAccountButton.isEnabled());
 
     }
 }

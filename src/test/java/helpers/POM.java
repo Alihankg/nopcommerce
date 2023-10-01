@@ -30,32 +30,4 @@ public class POM {
 
     @FindBy(xpath = "//div[@class='message-error validation-summary-errors']")
     public WebElement loginErrorMessage;
-
-    public WebElement getLoginPage() {
-        return loginPage;
-    }
-
-    public WebElement getEmail() {
-        return email;
-    }
-
-    public WebElement getPassword() {
-        return password;
-    }
-
-    public WebElement getLoginButton() {
-        return loginButton;
-    }
-
-    public WebElement getLogoutButton() {
-        return logoutButton;
-    }
-
-    public WebElement getMyAccountButton() {
-        return myAccountButton;
-    }
-
-    public WebElement getLoginErrorMessage() {
-        return loginErrorMessage;
-    }
 }

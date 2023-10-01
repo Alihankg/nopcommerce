@@ -1,7 +1,6 @@
 package tests;
 
 import Utility.BaseDriver;
-import Utility.MyFunc;
 import helpers.POM;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -17,26 +16,23 @@ public class US_03_Login extends BaseDriver {
         pom = new POM();
 
         driver.get("https://demo.nopcommerce.com");
-        driver.manage().window().maximize();
 
-        pom.getLoginPage().click();
-        pom.getEmail().sendKeys(email);
-        pom.getPassword().sendKeys(password);
-        pom.getLoginButton().click();
+        pom.loginPage.click();
+        pom.email.sendKeys(email);
+        pom.password.sendKeys(password);
+        pom.loginButton.click();
 
-        if (email.equals("testng1@gmail.com") && password.equals("123qweasd")) {
-            Assert.assertTrue(pom.getMyAccountButton().isEnabled());
-            pom.getLogoutButton().click();
+        if (email.equals("tester@tester.tester.com") && password.equals("secret")) {
+            Assert.assertTrue(pom.myAccountButton.isEnabled());
+            pom.logoutButton.click();
         } else {
-            Assert.assertTrue(pom.getLoginErrorMessage().getText().contains("Login was unsuccessful. Please correct the errors and try again."));
+            Assert.assertTrue(pom.loginErrorMessage.getText().contains("Login was unsuccessful. Please correct the errors and try again."));
         }
-
-        MyFunc.Bekle(1);
     }
 
     @DataProvider(name = "loginTestData")
     public Object[][] loginData(){
-        return new Object[][]{{"testng1@gmail.com", "123qweasd"},
+        return new Object[][]{{"tester@tester.tester.com", "secret"},
                 {"testng2@gmail.com", "123qweasd"},
                 {"testng1@gmail.com", "qweasdzxc"},
                 {"testng2@gmail.com", "qweasdzxc"}};
