@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Cases">
+    <suite-files>
+        <suite-file path="xml/US_02.xml"/>
+        <suite-file path="xml/US_03.xml"/>
+    </suite-files>
+</suite> <!-- Suite -->
