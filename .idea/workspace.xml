@@ -5,12 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cd2c776-7974-4cfb-b10c-e29e96bfaa5b" name="Changes" comment="Initial commit">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/AC_01_04/AC_01_Reg_.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/AC_01_04/US_04_TabMenu01.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/AC_01_04/US_06_Order01.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/XML/main.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/POM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/POM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/US_02_Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/US_02_Login.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -21,16 +35,58 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="Musab" />
+    </key>
+  </component>
+  <component name="RunManager" selected="TestNG.C:/javademos/nopcommerce_1/src/test/java/XML/main.xml">
+    <configuration name="C:/javademos/nopcommerce_1/src/test/java/XML/main.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="nopcommerce" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/src/test/java/XML/main.xml" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="US_06_Order01.US_06_Order" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="nopcommerce" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="AC_01_04.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="AC_01_04" />
+      <option name="MAIN_CLASS_NAME" value="AC_01_04.US_06_Order01" />
+      <option name="METHOD_NAME" value="US_06_Order" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TestNG.C:/javademos/nopcommerce_1/src/test/java/XML/main.xml" />
+        <item itemvalue="TestNG.US_06_Order01.US_06_Order" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

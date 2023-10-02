@@ -18,10 +18,10 @@ public class US_02_Login extends BaseDriver {
         loginClick.click();
 
         WebElement email = isClickable(By.xpath("//input[@class='email']"));
-        email.sendKeys("");
+        email.sendKeys("testng1@gmail.com");
 
         WebElement password = driver.findElement(By.xpath("//input[@class='password']"));
-        password.sendKeys("");
+        password.sendKeys("123qweasd");
 
         WebElement loginButton = driver.findElement(By.xpath("//button[@class='button-1 login-button']"));
         loginButton.click();
