@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cd2c776-7974-4cfb-b10c-e29e96bfaa5b" name="Changes" comment="">
+    <list default="true" id="1cd2c776-7974-4cfb-b10c-e29e96bfaa5b" name="Changes" comment="2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/tests/US_05_Gift01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/US_05_Gift01.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/xml/US_05.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/xml/US_05.xml" afterDir="false" />
@@ -81,6 +81,24 @@
     </key>
   </component>
   <component name="RunManager" selected="TestNG./Users/alikhanzhanybekov/IdeaProjects/nopcommerce/src/test/java/xml/US_05.xml">
+    <configuration name="US_05_Gift01.hediye" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="nopcommerce" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.US_05_Gift01" />
+      <option name="METHOD_NAME" value="hediye" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="/Users/alikhanzhanybekov/IdeaProjects/nopcommerce/src/test/java/xml/US_02.xml" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="nopcommerce" />
       <option name="SUITE_NAME" value="$PROJECT_DIR$/src/test/java/xml/US_02.xml" />
@@ -114,6 +132,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="TestNG./Users/alikhanzhanybekov/IdeaProjects/nopcommerce/src/test/java/xml/US_05.xml" />
+        <item itemvalue="TestNG.US_05_Gift01.hediye" />
         <item itemvalue="TestNG./Users/alikhanzhanybekov/IdeaProjects/nopcommerce/src/test/java/xml/US_03.xml" />
         <item itemvalue="TestNG./Users/alikhanzhanybekov/IdeaProjects/nopcommerce/src/test/java/xml/US_02.xml" />
         <item itemvalue="TestNG./Users/alikhanzhanybekov/IdeaProjects/nopcommerce/src/test/java/xml/US_03.xml" />
@@ -157,7 +176,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696186806137</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="2">
+      <created>1696447305867</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1696447305867</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -188,7 +214,8 @@
     <MESSAGE value="Initial commit 2" />
     <MESSAGE value="NOP-3 - US_03_Login completed!" />
     <MESSAGE value="Fixed some problems and improved POM" />
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="2" />
+    <option name="LAST_COMMIT_MESSAGE" value="2" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

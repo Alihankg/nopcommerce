@@ -12,14 +12,14 @@ import org.testng.annotations.Test;
 public class US_05_Gift01 extends BaseDriver {
     @Test
     @Parameters("mesaj")
-    public void hediye(String arananKelime){
+    public void hediye(String mesaj){
         driver.get("https://demo.nopcommerce.com/");
         POM pom=new POM();
 
         pom.GiftCarts.click();
         MyFunc.Bekle(2);
         pom.picture.click();
-        pom.Name.sendKeys(arananKelime);
+        pom.Name.sendKeys(mesaj);
         pom.Email.sendKeys("musab773@pbridal.com");
         MyFunc.Bekle(2);
         pom.YourName.sendKeys("Taş");

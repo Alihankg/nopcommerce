@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="US_05">
-    <test name="mesaj1">
+    <test name="mesaj">
         <parameter name="mesaj" value="Kader"/>
         <classes>
             <class name="tests.US_05_Gift01"/>
