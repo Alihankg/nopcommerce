@@ -9,9 +9,9 @@ import org.testng.annotations.Test;
 public class US_05_Gift01 extends BaseDriver {
 
   @Test
-  @Parameters({"mesaj","mesaj2"})
+  @Parameters({"mesaj"})
 
-    public void hediye(String arananKelime,String isim){
+    public void hediye(String arananKelime){
       driver.get("https://demo.nopcommerce.com/");
       POM pom=new POM();
 
@@ -21,7 +21,7 @@ public class US_05_Gift01 extends BaseDriver {
       pom.Name.sendKeys(arananKelime);
       pom.Email.sendKeys("musab773@pbridal.com");
       MyFunc.Bekle(2);
-      pom.YourName.sendKeys(isim);
+      pom.YourName.sendKeys("Taş");
       pom.YourEmail.sendKeys("kixiwop773@pbridal.com");
       pom.Message.sendKeys("testNg");
       MyFunc.Bekle(2);
