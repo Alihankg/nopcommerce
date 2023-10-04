@@ -3,7 +3,7 @@
 
     <test name="myTest1">
         <parameter name="mesaj" value="Kader"></parameter>
-        <parameter name="mesaj" value="Taş"></parameter>
+        <parameter name="mesaj2" value="Taş"></parameter>
         <parameter name="element" value="Notebook"> </parameter>
 
 

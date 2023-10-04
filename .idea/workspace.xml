@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cd2c776-7974-4cfb-b10c-e29e96bfaa5b" name="Changes" comment="Güncel2" />
+    <list default="true" id="1cd2c776-7974-4cfb-b10c-e29e96bfaa5b" name="Changes" comment="Güncel4">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/US_05_Gift01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/US_05_Gift01.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,6 +29,12 @@
   }
 }]]></component>
   <component name="GithubPullRequestsUISettings">
+    <option name="recentNewPullRequestHead">
+      <RepoCoordinatesHolder>
+        <option name="owner" value="Alihankg" />
+        <option name="repository" value="nopcommerce" />
+      </RepoCoordinatesHolder>
+    </option>
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
         <option name="accountId" value="39d6299a-ab7f-4e71-ba28-a65da441e3ac" />
@@ -39,17 +48,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/90546/IdeaProjects/nopcommerce/src/test/java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/90546/IdeaProjects/nopcommerce/src/test/java",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\90546\IdeaProjects\nopcommerce\src\test\java" />
@@ -58,7 +67,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="TestNG.US_05_Gift01.hediye">
     <configuration name="US_04_TabMenü02.TabMenu2" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="nopcommerce" />
       <option name="PACKAGE_NAME" value="" />
@@ -71,8 +80,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="US_05_Gift01.hediye" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="nopcommerce" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="US_05_Gift01" />
+      <option name="METHOD_NAME" value="hediye" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.US_05_Gift01.hediye" />
         <item itemvalue="TestNG.US_04_TabMenü02.TabMenu2" />
       </list>
     </recent_temporary>
@@ -100,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696271715365</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Güncel3">
+      <created>1696272698733</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1696272698733</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -117,6 +146,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Güncel2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Güncel2" />
+    <MESSAGE value="Güncel3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Güncel3" />
   </component>
 </project>

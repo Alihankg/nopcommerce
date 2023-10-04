@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 public class US_05_Gift01 extends BaseDriver {
 
   @Test
-  @Parameters("mesaj")
+  @Parameters({"mesaj","mesaj2"})
 
     public void hediye(String arananKelime,String isim){
       driver.get("https://demo.nopcommerce.com/");
@@ -29,8 +29,6 @@ public class US_05_Gift01 extends BaseDriver {
 
       WebElement shopping=driver.findElement(By.linkText("shopping cart"));
       Assert.assertTrue(shopping.getText().toLowerCase().contains("shopping"),"aranan mesaj görüntülenemedi");
-
-
 
 
 
