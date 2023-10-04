@@ -7,10 +7,4 @@
             <class name="tests.US_05_Gift01"/>
         </classes>
     </test> <!-- Test -->
-    <test name="mesaj2">
-        <parameter name="mesaj" value="Taş"/>
-        <classes>
-            <class name="tests.US_05_Gift01"/>
-        </classes>
-    </test>
 </suite> <!-- Suite -->
