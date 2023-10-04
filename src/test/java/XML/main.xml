@@ -1,0 +1,28 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="mySuit">
+
+    <test name="myTest1">
+
+        <classes>
+            <class name="AC_01_04.US_04_TabMenu01"></class>
+        </classes>
+
+    </test>
+
+    <test name="myTest5">
+
+        <classes> <!--AC_01_04.AC_01_Reg_ Hata verebilir işlem gerçekleştiriliyor ancak
+         daha önce açılmış bir hesap olduğundan dolayı.-->
+            <class name="AC_01_04.AC_01_Reg_"> </class>
+        </classes>
+    </test>
+
+    <test name="myTest6">
+
+        <classes>
+            <class name="AC_01_04.US_06_Order01"> </class>
+        </classes>
+    </test>
+
+</suite>
