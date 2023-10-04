@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="US_04">
+    <test name="US_04">
+        <parameter name="element" value="Notebook"/>
+        <classes>
+            <class name="tests.US_04_TabMenu02"/>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->

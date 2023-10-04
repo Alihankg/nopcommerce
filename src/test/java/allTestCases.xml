@@ -4,5 +4,7 @@
     <suite-files>
         <suite-file path="xml/US_02.xml"/>
         <suite-file path="xml/US_03.xml"/>
+        <suite-file path="xml/US_04.xml"/>
+        <suite-file path="xml/US_05.xml"/>
     </suite-files>
 </suite> <!-- Suite -->

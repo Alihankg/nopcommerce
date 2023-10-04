@@ -1,0 +1,543 @@
+Index: src/test/java/Utility/BaseDriver.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Utility;\r\n\r\n\r\nimport org.apache.logging.log4j.LogManager;\r\nimport org.openqa.selenium.By;\r\nimport org.openqa.selenium.WebDriver;\r\nimport org.openqa.selenium.WebElement;\r\nimport org.openqa.selenium.chrome.ChromeDriver;\r\nimport org.openqa.selenium.support.ui.WebDriverWait;\r\nimport org.testng.Assert;\r\nimport org.testng.ITestResult;\r\nimport org.testng.annotations.*;\r\n\r\nimport java.time.Duration;\r\nimport java.util.logging.Level;\r\nimport java.util.logging.Logger;\r\n\r\npublic class BaseDriver {\r\n\r\n    public static final org.apache.logging.log4j.Logger logger4j= LogManager.getLogger();\r\n\r\n    public static WebDriver driver; // SingletonDriver method\r\n    public static WebDriverWait wait;\r\n\r\n    @BeforeSuite\r\n    public void baslangicIslemleri(){\r\n        Logger logger= Logger.getLogger(\"\"); // output yapılan logları al.\r\n        logger.setLevel(Level.SEVERE); // sadece ERROR ları göster\r\n\r\n        driver = new ChromeDriver(); // jenkins deyken : sen head olmadan yani hafızada çalış\r\n        //driver.manage().window().maximize(); // Ekranı max yapıyor.\r\n        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20)); // 20 sn mühlet: sayfayı yükleme mühlet\r\n        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));  // 20 sn mühlet: elementi bulma mühleti\r\n        wait = new WebDriverWait(driver, Duration.ofSeconds(20));\r\n    }\r\n\r\n    @AfterSuite\r\n    public void bitisIslemleri(){ // tearDown\r\n        MyFunc.Bekle(5);\r\n        driver.quit();\r\n    }\r\n\r\n    @BeforeMethod\r\n    public void beforeMethod(){\r\n        //System.out.println(\"test metodu başladı\");\r\n        logger4j.info(\"test metodu başladı\");\r\n        logger4j.warn(\"warning mesaj test başladı\");\r\n    }\r\n\r\n    @AfterMethod\r\n    public void afterMethod(ITestResult sonuc){ // tesin sonuç ve isim bilgisini olduğu değişkeni vereyim mi\r\n        //System.out.println(\"test metodu bitti\");\r\n        logger4j.info(sonuc.getName() +\" test metodu bitti \" + (sonuc.getStatus()==1 ? \" passed \" : \"fail\") );\r\n        logger4j.warn(\"warning mesaj test bitti\");\r\n\r\n        // excel yazabileceksin\r\n        // dosyaya da yazabileceksin\r\n    }\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/Utility/BaseDriver.java b/src/test/java/Utility/BaseDriver.java
+--- a/src/test/java/Utility/BaseDriver.java	
++++ b/src/test/java/Utility/BaseDriver.java	
+@@ -28,7 +28,7 @@
+         logger.setLevel(Level.SEVERE); // sadece ERROR ları göster
+ 
+         driver = new ChromeDriver(); // jenkins deyken : sen head olmadan yani hafızada çalış
+-        //driver.manage().window().maximize(); // Ekranı max yapıyor.
++        driver.manage().window().maximize(); // Ekranı max yapıyor.
+         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20)); // 20 sn mühlet: sayfayı yükleme mühlet
+         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));  // 20 sn mühlet: elementi bulma mühleti
+         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+Index: src/test/java/US_05_Gift01.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/US_05_Gift01.java b/src/test/java/US_05_Gift01.java
+new file mode 100644
+--- /dev/null	
++++ b/src/test/java/US_05_Gift01.java	
+@@ -0,0 +1,54 @@
++import Utility.BaseDriver;
++import Utility.MyFunc;
++import org.openqa.selenium.By;
++import org.openqa.selenium.WebElement;
++import org.testng.Assert;
++import org.testng.annotations.Parameters;
++import org.testng.annotations.Test;
++
++public class US_05_Gift01 extends BaseDriver {
++
++  @Test
++  @Parameters("mesaj")
++
++    public void hediye(String arananKelime){
++      driver.get("https://demo.nopcommerce.com/");
++
++      WebElement GiftCarts= driver.findElement(By.linkText("Gift Cards"));
++      GiftCarts.click();
++      MyFunc.Bekle(2);
++
++      WebElement picture= driver.findElement(By.xpath("(//div[@class='picture'])[1]"));
++      picture.click();
++
++      WebElement Name= driver.findElement(By.cssSelector("[id='giftcard_43_RecipientName']"));
++      Name.sendKeys(arananKelime);
++
++     WebElement Email= driver.findElement(By.cssSelector("[id='giftcard_43_RecipientEmail']"));
++     Email.sendKeys("musab773@pbridal.com");
++     MyFunc.Bekle(2);
++
++     WebElement YourName= driver.findElement(By.cssSelector("[id='giftcard_43_SenderName']"));
++     YourName.sendKeys("Kado");
++
++     WebElement YourEmail= driver.findElement(By.cssSelector("[id='giftcard_43_SenderEmail']"));
++    YourEmail.sendKeys("kixiwop773@pbridal.com");
++
++    WebElement Message= driver.findElement(By.cssSelector("[id='giftcard_43_Message']"));
++    Message.sendKeys("testng");
++    MyFunc.Bekle(2);
++
++    WebElement AdToCard= driver.findElement(By.cssSelector("[id='add-to-cart-button-43']"));
++    AdToCard.click();
++
++    WebElement shopping=driver.findElement(By.linkText("shopping cart"));
++    Assert.assertTrue(shopping.getText().toLowerCase().contains("shopping"),"aranan mesaj görüntülenemedi");
++
++
++
++
++
++
++  }
++
++}
+Index: src/test/java/Methods.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/Methods.java b/src/test/java/Methods.java
+new file mode 100644
+--- /dev/null	
++++ b/src/test/java/Methods.java	
+@@ -0,0 +1,82 @@
++import Utility.BaseDriver;
++import org.openqa.selenium.WebElement;
++import org.openqa.selenium.interactions.Action;
++import org.openqa.selenium.interactions.Actions;
++import org.openqa.selenium.support.ui.ExpectedConditions;
++import org.openqa.selenium.support.ui.Select;
++import org.openqa.selenium.support.ui.WebDriverWait;
++import org.testng.Assert;
++
++import java.time.Duration;
++import java.util.Random;
++
++public class Methods {
++    static WebDriverWait wait;
++
++    public Methods() {
++        wait = new WebDriverWait(BaseDriver.driver, Duration.ofSeconds(15));
++    }
++    public void sendKeysFunction(WebElement element, String value) {
++        waitUntilVisible(element);
++        element.clear();
++        element.sendKeys(value);
++    }
++
++    public void clickFunction(WebElement element) {
++        waitUntilClickable(element);
++        element.click();
++    }
++
++    public void waitUntilVisible(WebElement element) {
++        wait.until(ExpectedConditions.visibilityOf(element));
++
++    }
++
++    public void waitUntilClickable(WebElement element) {
++        wait.until(ExpectedConditions.elementToBeClickable(element));
++    }
++
++    public static void waiting(int second) {
++        try {
++            Thread.sleep(second * 1000L);
++        } catch (InterruptedException e) {
++            throw new RuntimeException(e);
++        }
++    }
++
++    public static int RandomGenerator(int Limit) {
++        return (int) (Math.random() * Limit);
++    }
++
++    public void verifyContainsText(WebElement element, String msg) {
++        waitUntilVisible(element);
++        Assert.assertTrue(element.getText().contains(msg));
++    }
++
++    public void selectElement(WebElement element, String msg) {
++        Select select = new Select(element);
++        waiting(1);
++        select.selectByValue(msg);
++    }
++
++    public void hoverFunction(WebElement element) {
++        Actions actions = new Actions(BaseDriver.driver);
++        Action action = actions.moveToElement(element).build();
++        action.perform();
++    }
++
++    public static int generalRandom(int min, int max) {
++        Random rnd = new Random();
++        return rnd.nextInt((max - min) + 1) + min;
++
++    }
++
++    public void elementfindersText(WebElement element) {
++        POM po = new POM();
++        hoverFunction(element);
++        for (WebElement e : po.getSubtabs()) {
++            System.out.println(e.getText());
++        }
++    }
++
++}
+Index: src/test/java/US_05_Gift01.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/US_05_Gift01.xml b/src/test/java/US_05_Gift01.xml
+new file mode 100644
+--- /dev/null	
++++ b/src/test/java/US_05_Gift01.xml	
+@@ -0,0 +1,17 @@
++<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
++<suite name="my Suite">
++
++    <test name="myTest1">
++        <parameter name="mesaj" value="Kader"></parameter>
++        <parameter name="mesaj" value="Taş"></parameter>
++
++
++        <classes>
++
++            <class name="US_05_Gift01"></class>
++
++        </classes>
++
++    </test>
++
++</suite>
+\ No newline at end of file
+Index: src/test/java/US_04_TabMenü02.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/US_04_TabMenü02.java b/src/test/java/US_04_TabMenü02.java
+new file mode 100644
+--- /dev/null	
++++ b/src/test/java/US_04_TabMenü02.java	
+@@ -0,0 +1,34 @@
++import Utility.BaseDriver;
++import org.openqa.selenium.By;
++import org.openqa.selenium.WebElement;
++import org.testng.annotations.Test;
++
++import java.util.List;
++
++
++public class US_04_TabMenü02 extends BaseDriver {
++
++    @Test
++    public void TabMenu2(){
++
++        POM po=new POM();
++        driver.get("https://demo.nopcommerce.com/");
++
++        List<WebElement>TabMenu=driver.findElements(By.cssSelector("[class='top-menu notmobile']>li"));
++
++        for (int i = 0; i < TabMenu.size(); i++) {
++            WebElement Tabb=TabMenu.get(i);
++            System.out.println(Tabb.getText());
++        }
++
++        po.getComputers().click();
++        po.getElectronics().click();
++        po.getApparel().click();
++
++
++
++    }
++
++}
++
++
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"1cd2c776-7974-4cfb-b10c-e29e96bfaa5b\" name=\"Changes\" comment=\"Initial commit\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2VzZxGS3qICCWpycUJ7yH4p5sKM\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"git-widget-placeholder\": \"main\",\r\n    \"project.structure.last.edited\": \"Modules\",\r\n    \"project.structure.proportion\": \"0.0\",\r\n    \"project.structure.side.proportion\": \"0.0\"\r\n  }\r\n}]]></component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"1cd2c776-7974-4cfb-b10c-e29e96bfaa5b\" name=\"Changes\" comment=\"\" />\r\n      <created>1695841115030</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1695841115030</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Initial commit\">\r\n      <created>1696004328853</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1696004328853</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Initial commit\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Initial commit\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -5,15 +5,37 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="1cd2c776-7974-4cfb-b10c-e29e96bfaa5b" name="Changes" comment="Initial commit">
++      <change afterPath="$PROJECT_DIR$/src/test/java/Methods.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/test/java/US_04_TabMenü02.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/test/java/US_05_Gift01.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/test/java/US_05_Gift01.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/test/java/POM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/POM.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/test/java/Utility/BaseDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Utility/BaseDriver.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
++  </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="Class" />
++      </list>
++    </option>
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="Kader" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++  </component>
++  <component name="ProblemsViewState">
++    <option name="selectedTabId" value="ProjectErrors" />
+   </component>
+   <component name="ProjectId" id="2VzZxGS3qICCWpycUJ7yH4p5sKM" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+@@ -21,16 +43,82 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "git-widget-placeholder": "main",
+-    "project.structure.last.edited": "Modules",
+-    "project.structure.proportion": "0.0",
+-    "project.structure.side.proportion": "0.0"
+-  }
+-}]]></component>
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/90546/IdeaProjects/nopcommerce/src/test/java&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
++    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
++    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
++  }
++}</component>
++  <component name="RecentsManager">
++    <key name="CopyFile.RECENT_KEYS">
++      <recent name="C:\Users\90546\IdeaProjects\nopcommerce\src\test\java" />
++    </key>
++    <key name="CopyClassDialog.RECENTS_KEY">
++      <recent name="" />
++    </key>
++  </component>
++  <component name="RunManager" selected="TestNG.US_02_Login.Login">
++    <configuration name="C:/Users/90546/IdeaProjects/nopcommerce/src/test/java/US_05_Gift01.xml" type="TestNG" temporary="true" nameIsGenerated="true">
++      <module name="nopcommerce" />
++      <option name="SUITE_NAME" value="$PROJECT_DIR$/src/test/java/US_05_Gift01.xml" />
++      <option name="TEST_OBJECT" value="SUITE" />
++      <properties />
++      <listeners />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="US_02_Login.Login" type="TestNG" temporary="true" nameIsGenerated="true">
++      <module name="nopcommerce" />
++      <option name="PACKAGE_NAME" value="" />
++      <option name="MAIN_CLASS_NAME" value="US_02_Login" />
++      <option name="METHOD_NAME" value="Login" />
++      <option name="TEST_OBJECT" value="METHOD" />
++      <properties />
++      <listeners />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="US_04_TabMenü02.TabMenu2" type="TestNG" temporary="true" nameIsGenerated="true">
++      <module name="nopcommerce" />
++      <option name="PACKAGE_NAME" value="" />
++      <option name="MAIN_CLASS_NAME" value="US_04_TabMenü02" />
++      <option name="METHOD_NAME" value="TabMenu2" />
++      <option name="TEST_OBJECT" value="METHOD" />
++      <properties />
++      <listeners />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="US_05_Gift01.hediye" type="TestNG" temporary="true" nameIsGenerated="true">
++      <module name="nopcommerce" />
++      <option name="PACKAGE_NAME" value="" />
++      <option name="MAIN_CLASS_NAME" value="US_05_Gift01" />
++      <option name="METHOD_NAME" value="hediye" />
++      <option name="TEST_OBJECT" value="METHOD" />
++      <properties />
++      <listeners />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <recent_temporary>
++      <list>
++        <item itemvalue="TestNG.US_05_Gift01.hediye" />
++        <item itemvalue="TestNG.US_02_Login.Login" />
++        <item itemvalue="TestNG.C:/Users/90546/IdeaProjects/nopcommerce/src/test/java/US_05_Gift01.xml" />
++        <item itemvalue="TestNG.US_04_TabMenü02.TabMenu2" />
++        <item itemvalue="TestNG.C:/Users/90546/IdeaProjects/nopcommerce/src/test/java/US_05_Gift01.xml" />
++      </list>
++    </recent_temporary>
++  </component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
+Index: .idea/uiDesigner.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/uiDesigner.xml b/.idea/uiDesigner.xml
+new file mode 100644
+--- /dev/null	
++++ b/.idea/uiDesigner.xml	
+@@ -0,0 +1,124 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="Palette2">
++    <group name="Swing">
++      <item class="com.intellij.uiDesigner.HSpacer" tooltip-text="Horizontal Spacer" icon="/com/intellij/uiDesigner/icons/hspacer.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="1" hsize-policy="6" anchor="0" fill="1" />
++      </item>
++      <item class="com.intellij.uiDesigner.VSpacer" tooltip-text="Vertical Spacer" icon="/com/intellij/uiDesigner/icons/vspacer.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="1" anchor="0" fill="2" />
++      </item>
++      <item class="javax.swing.JPanel" icon="/com/intellij/uiDesigner/icons/panel.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3" />
++      </item>
++      <item class="javax.swing.JScrollPane" icon="/com/intellij/uiDesigner/icons/scrollPane.svg" removable="false" auto-create-binding="false" can-attach-label="true">
++        <default-constraints vsize-policy="7" hsize-policy="7" anchor="0" fill="3" />
++      </item>
++      <item class="javax.swing.JButton" icon="/com/intellij/uiDesigner/icons/button.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="3" anchor="0" fill="1" />
++        <initial-values>
++          <property name="text" value="Button" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JRadioButton" icon="/com/intellij/uiDesigner/icons/radioButton.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
++        <initial-values>
++          <property name="text" value="RadioButton" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JCheckBox" icon="/com/intellij/uiDesigner/icons/checkBox.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
++        <initial-values>
++          <property name="text" value="CheckBox" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JLabel" icon="/com/intellij/uiDesigner/icons/label.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="0" anchor="8" fill="0" />
++        <initial-values>
++          <property name="text" value="Label" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JTextField" icon="/com/intellij/uiDesigner/icons/textField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++          <preferred-size width="150" height="-1" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JPasswordField" icon="/com/intellij/uiDesigner/icons/passwordField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++          <preferred-size width="150" height="-1" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JFormattedTextField" icon="/com/intellij/uiDesigner/icons/formattedTextField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++          <preferred-size width="150" height="-1" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTextArea" icon="/com/intellij/uiDesigner/icons/textArea.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTextPane" icon="/com/intellij/uiDesigner/icons/textPane.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JEditorPane" icon="/com/intellij/uiDesigner/icons/editorPane.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JComboBox" icon="/com/intellij/uiDesigner/icons/comboBox.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="2" anchor="8" fill="1" />
++      </item>
++      <item class="javax.swing.JTable" icon="/com/intellij/uiDesigner/icons/table.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JList" icon="/com/intellij/uiDesigner/icons/list.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="2" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTree" icon="/com/intellij/uiDesigner/icons/tree.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTabbedPane" icon="/com/intellij/uiDesigner/icons/tabbedPane.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
++          <preferred-size width="200" height="200" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JSplitPane" icon="/com/intellij/uiDesigner/icons/splitPane.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
++          <preferred-size width="200" height="200" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JSpinner" icon="/com/intellij/uiDesigner/icons/spinner.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
++      </item>
++      <item class="javax.swing.JSlider" icon="/com/intellij/uiDesigner/icons/slider.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
++      </item>
++      <item class="javax.swing.JSeparator" icon="/com/intellij/uiDesigner/icons/separator.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3" />
++      </item>
++      <item class="javax.swing.JProgressBar" icon="/com/intellij/uiDesigner/icons/progressbar.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1" />
++      </item>
++      <item class="javax.swing.JToolBar" icon="/com/intellij/uiDesigner/icons/toolbar.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1">
++          <preferred-size width="-1" height="20" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JToolBar$Separator" icon="/com/intellij/uiDesigner/icons/toolbarSeparator.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="0" anchor="0" fill="1" />
++      </item>
++      <item class="javax.swing.JScrollBar" icon="/com/intellij/uiDesigner/icons/scrollbar.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="0" anchor="0" fill="2" />
++      </item>
++    </group>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"MavenProjectsManager\">\r\n    <option name=\"originalFiles\">\r\n      <list>\r\n        <option value=\"$PROJECT_DIR$/pom.xml\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_20\" default=\"true\" project-jdk-name=\"20\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	
++++ b/.idea/misc.xml	
+@@ -8,7 +8,7 @@
+       </list>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_20" default="true" project-jdk-name="20" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_20" default="true" project-jdk-name="corretto-20" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+ </project>
+\ No newline at end of file

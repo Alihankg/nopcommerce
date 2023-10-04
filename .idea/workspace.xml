@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cd2c776-7974-4cfb-b10c-e29e96bfaa5b" name="Changes" comment="NOP-3 - US_03_Login completed!">
+    <list default="true" id="1cd2c776-7974-4cfb-b10c-e29e96bfaa5b" name="Changes" comment="2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Utility/BaseDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Utility/BaseDriver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/helpers/POM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/helpers/POM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/tests/US_02_Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/US_02_Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/tests/US_03_Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/US_03_Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/tests/US_05_Gift01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/US_05_Gift01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/xml/US_05.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/xml/US_05.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +48,9 @@
       </UrlAndAccount>
     </option>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -59,23 +60,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.15332031",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Merging Kader&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15332031&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/java/xml" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG./Users/alikhanzhanybekov/IdeaProjects/nopcommerce/src/test/java/xml/US_03.xml">
+  <component name="RunManager" selected="TestNG./Users/alikhanzhanybekov/IdeaProjects/nopcommerce/src/test/java/xml/US_05.xml">
+    <configuration name="US_05_Gift01.hediye" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="nopcommerce" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.US_05_Gift01" />
+      <option name="METHOD_NAME" value="hediye" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="/Users/alikhanzhanybekov/IdeaProjects/nopcommerce/src/test/java/xml/US_02.xml" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="nopcommerce" />
       <option name="SUITE_NAME" value="$PROJECT_DIR$/src/test/java/xml/US_02.xml" />
@@ -96,8 +119,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="/Users/alikhanzhanybekov/IdeaProjects/nopcommerce/src/test/java/xml/US_05.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="nopcommerce" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/src/test/java/xml/US_05.xml" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG./Users/alikhanzhanybekov/IdeaProjects/nopcommerce/src/test/java/xml/US_05.xml" />
+        <item itemvalue="TestNG.US_05_Gift01.hediye" />
         <item itemvalue="TestNG./Users/alikhanzhanybekov/IdeaProjects/nopcommerce/src/test/java/xml/US_03.xml" />
         <item itemvalue="TestNG./Users/alikhanzhanybekov/IdeaProjects/nopcommerce/src/test/java/xml/US_02.xml" />
         <item itemvalue="TestNG./Users/alikhanzhanybekov/IdeaProjects/nopcommerce/src/test/java/xml/US_03.xml" />
@@ -134,7 +169,21 @@
       <option name="project" value="LOCAL" />
       <updated>1696056779029</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fixed some problems and improved POM">
+      <created>1696186806137</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1696186806137</updated>
+    </task>
+    <task id="LOCAL-00005" summary="2">
+      <created>1696447305867</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1696447305867</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -148,7 +197,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="origin/main" />
                       </list>
                     </value>
                   </entry>
@@ -164,6 +213,12 @@
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Initial commit 2" />
     <MESSAGE value="NOP-3 - US_03_Login completed!" />
-    <option name="LAST_COMMIT_MESSAGE" value="NOP-3 - US_03_Login completed!" />
+    <MESSAGE value="Fixed some problems and improved POM" />
+    <MESSAGE value="2" />
+    <option name="LAST_COMMIT_MESSAGE" value="2" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

@@ -1,0 +1,313 @@
+Index: src/test/java/US_05_Gift01.java
+===================================================================
+diff --git a/src/test/java/US_05_Gift01.java b/src/test/java/US_05_Gift01.java
+new file mode 100644
+--- /dev/null	
++++ b/src/test/java/US_05_Gift01.java	
+@@ -0,0 +1,38 @@
++import Utility.BaseDriver;
++import Utility.MyFunc;
++import helpers.POM;
++import org.openqa.selenium.By;
++import org.openqa.selenium.WebElement;
++import org.testng.Assert;
++import org.testng.annotations.Parameters;
++import org.testng.annotations.Test;
++
++public class US_05_Gift01 extends BaseDriver {
++
++  @Test
++  @Parameters("mesaj")
++
++    public void hediye(String arananKelime,String mesaj){
++      driver.get("https://demo.nopcommerce.com/");
++      POM pom=new POM();
++
++      pom.GiftCarts.click();
++      pom.picture.click();
++      MyFunc.Bekle(2);
++      pom.Name.sendKeys(arananKelime);
++      pom.Email.sendKeys("musab773@pbridal.com");
++      MyFunc.Bekle(2);
++      pom.YourName.sendKeys(mesaj);
++      pom.YourEmail.sendKeys("kixiwop773@pbridal.com");
++      pom.Message.sendKeys("testNg");
++      MyFunc.Bekle(2);
++      pom.AdToCard.click();
++
++    WebElement shopping=driver.findElement(By.linkText("shopping cart"));
++    Assert.assertTrue(shopping.getText().toLowerCase().contains("shopping"),"aranan mesaj görüntülenemedi");
++
++
++
++  }
++
++}
+Index: src/test/java/US_05_Gift01.xml
+===================================================================
+diff --git a/src/test/java/US_05_Gift01.xml b/src/test/java/US_05_Gift01.xml
+new file mode 100644
+--- /dev/null	
++++ b/src/test/java/US_05_Gift01.xml	
+@@ -0,0 +1,17 @@
++<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
++<suite name="my Suite">
++
++    <test name="myTest1">
++        <parameter name="mesaj" value="Kader"></parameter>
++        <parameter name="mesaj" value="Taş"></parameter>
++
++
++        <classes>
++
++            <class name="US_05_Gift01"></class>
++
++        </classes>
++
++    </test>
++
++</suite>
+\ No newline at end of file
+Index: src/test/java/Methods.java
+===================================================================
+diff --git a/src/test/java/Methods.java b/src/test/java/Methods.java
+new file mode 100644
+--- /dev/null	
++++ b/src/test/java/Methods.java	
+@@ -0,0 +1,77 @@
++import Utility.BaseDriver;
++import helpers.POM;
++import org.openqa.selenium.WebElement;
++import org.openqa.selenium.interactions.Action;
++import org.openqa.selenium.interactions.Actions;
++import org.openqa.selenium.support.ui.ExpectedConditions;
++import org.openqa.selenium.support.ui.Select;
++import org.openqa.selenium.support.ui.WebDriverWait;
++import org.testng.Assert;
++
++import java.time.Duration;
++import java.util.Random;
++
++public class Methods {
++    static WebDriverWait wait;
++
++    public Methods() {
++        wait = new WebDriverWait(BaseDriver.driver, Duration.ofSeconds(15));
++    }
++    public void sendKeysFunction(WebElement element, String value) {
++        waitUntilVisible(element);
++        element.clear();
++        element.sendKeys(value);
++    }
++
++    public void clickFunction(WebElement element) {
++        waitUntilClickable(element);
++        element.click();
++    }
++
++    public void waitUntilVisible(WebElement element) {
++        wait.until(ExpectedConditions.visibilityOf(element));
++
++    }
++
++    public void waitUntilClickable(WebElement element) {
++        wait.until(ExpectedConditions.elementToBeClickable(element));
++    }
++
++    public static void waiting(int second) {
++        try {
++            Thread.sleep(second * 1000L);
++        } catch (InterruptedException e) {
++            throw new RuntimeException(e);
++        }
++    }
++
++    public static int RandomGenerator(int Limit) {
++        return (int) (Math.random() * Limit);
++    }
++
++    public void verifyContainsText(WebElement element, String msg) {
++        waitUntilVisible(element);
++        Assert.assertTrue(element.getText().contains(msg));
++    }
++
++    public void selectElement(WebElement element, String msg) {
++        Select select = new Select(element);
++        waiting(1);
++        select.selectByValue(msg);
++    }
++
++    public void hoverFunction(WebElement element) {
++        Actions actions = new Actions(BaseDriver.driver);
++        Action action = actions.moveToElement(element).build();
++        action.perform();
++    }
++
++    public static int generalRandom(int min, int max) {
++        Random rnd = new Random();
++        return rnd.nextInt((max - min) + 1) + min;
++
++    }
++
++
++
++}
+Index: src/test/java/US_04_TabMenü02.java
+===================================================================
+diff --git a/src/test/java/US_04_TabMenü02.java b/src/test/java/US_04_TabMenü02.java
+new file mode 100644
+--- /dev/null	
++++ b/src/test/java/US_04_TabMenü02.java	
+@@ -0,0 +1,50 @@
++import Utility.BaseDriver;
++import helpers.POM;
++import org.openqa.selenium.By;
++import org.openqa.selenium.WebElement;
++import org.testng.annotations.Test;
++
++import java.util.List;
++
++
++public class US_04_TabMenü02 extends BaseDriver {
++
++    @Test
++    public void TabMenu2(){
++
++        POM po=new POM();
++        driver.get("https://demo.nopcommerce.com/");
++
++        List<WebElement>TabMenu=driver.findElements(By.cssSelector("[class='top-menu notmobile']>li"));
++
++        for (int i = 0; i < TabMenu.size(); i++) {
++            WebElement Tabb=TabMenu.get(i);
++            System.out.println(Tabb.getText());
++        }
++
++        po.computers.click();
++        po.
++        ep.elementfindersText(ep.getElectronics());
++        ep.elementfindersText(ep.getApparel());
++        ep.getSearch().sendKeys(elements, Keys.ENTER);
++        int randomSelect = ElementsPage.RandomGenerator(ep.getProductTitle().size());
++        wait.until(ExpectedConditions.urlContains(elements));
++        List<String> stringList = new ArrayList<>();
++        for (WebElement element : ep.getProductTitle()) {
++            stringList.add(element.getText());
++        }
++        new Actions(driver).scrollByAmount(200, 0);
++        ep.getProductTitle().get(randomSelect).click();
++        Assert.assertTrue(stringList.contains(ep.getProductName().getText()), "Bulunamadı");
++    }
++
++
++
++
++
++
++}
++
++}
++
++
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"1cd2c776-7974-4cfb-b10c-e29e96bfaa5b\" name=\"Changes\" comment=\"NOP-3 - US_03_Login completed!\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/test/java/Utility/BaseDriver.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/test/java/Utility/BaseDriver.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/test/java/helpers/POM.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/test/java/helpers/POM.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/test/java/tests/US_02_Login.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/test/java/tests/US_02_Login.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/test/java/tests/US_03_Login.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/test/java/tests/US_03_Login.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"NOP-3\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">\r\n    <option name=\"recentNewPullRequestHead\">\r\n      <RepoCoordinatesHolder>\r\n        <option name=\"owner\" value=\"Alihankg\" />\r\n        <option name=\"repository\" value=\"nopcommerce\" />\r\n      </RepoCoordinatesHolder>\r\n    </option>\r\n    <option name=\"selectedUrlAndAccountId\">\r\n      <UrlAndAccount>\r\n        <option name=\"accountId\" value=\"7d10a697-d038-41a1-9227-dc5a0491b4dd\" />\r\n        <option name=\"url\" value=\"https://github.com/Alihankg/nopcommerce.git\" />\r\n      </UrlAndAccount>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProblemsViewState\">\r\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2VzZxGS3qICCWpycUJ7yH4p5sKM\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"git-widget-placeholder\": \"main\",\r\n    \"project.structure.last.edited\": \"SDKs\",\r\n    \"project.structure.proportion\": \"0.15332031\",\r\n    \"project.structure.side.proportion\": \"0.2\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveClassesOrPackagesDialog.RECENTS_KEY\">\r\n      <recent name=\"\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"TestNG./Users/alikhanzhanybekov/IdeaProjects/nopcommerce/src/test/java/xml/US_03.xml\">\r\n    <configuration name=\"/Users/alikhanzhanybekov/IdeaProjects/nopcommerce/src/test/java/xml/US_02.xml\" type=\"TestNG\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"nopcommerce\" />\r\n      <option name=\"SUITE_NAME\" value=\"$PROJECT_DIR$/src/test/java/xml/US_02.xml\" />\r\n      <option name=\"TEST_OBJECT\" value=\"SUITE\" />\r\n      <properties />\r\n      <listeners />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"/Users/alikhanzhanybekov/IdeaProjects/nopcommerce/src/test/java/xml/US_03.xml\" type=\"TestNG\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"nopcommerce\" />\r\n      <option name=\"SUITE_NAME\" value=\"$PROJECT_DIR$/src/test/java/xml/US_03.xml\" />\r\n      <option name=\"TEST_OBJECT\" value=\"SUITE\" />\r\n      <properties />\r\n      <listeners />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"TestNG./Users/alikhanzhanybekov/IdeaProjects/nopcommerce/src/test/java/xml/US_03.xml\" />\r\n        <item itemvalue=\"TestNG./Users/alikhanzhanybekov/IdeaProjects/nopcommerce/src/test/java/xml/US_02.xml\" />\r\n        <item itemvalue=\"TestNG./Users/alikhanzhanybekov/IdeaProjects/nopcommerce/src/test/java/xml/US_03.xml\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"1cd2c776-7974-4cfb-b10c-e29e96bfaa5b\" name=\"Changes\" comment=\"\" />\r\n      <created>1695841115030</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1695841115030</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Initial commit\">\r\n      <created>1696004328853</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1696004328853</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Initial commit 2\">\r\n      <created>1696004852507</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1696004852507</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"US_03_Login completed!\">\r\n      <created>1696056779029</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1696056779029</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"4\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"main\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Initial commit\" />\r\n    <MESSAGE value=\"Initial commit 2\" />\r\n    <MESSAGE value=\"NOP-3 - US_03_Login completed!\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"NOP-3 - US_03_Login completed!\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -5,11 +5,13 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="1cd2c776-7974-4cfb-b10c-e29e96bfaa5b" name="Changes" comment="NOP-3 - US_03_Login completed!">
++      <change afterPath="$PROJECT_DIR$/src/test/java/Methods.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/test/java/US_04_TabMenü02.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/test/java/US_05_Gift01.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/test/java/US_05_Gift01.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/test/java/Utility/BaseDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Utility/BaseDriver.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/test/java/helpers/POM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/helpers/POM.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/test/java/tests/US_02_Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/US_02_Login.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/test/java/tests/US_03_Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/US_03_Login.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -59,23 +61,35 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+-    "git-widget-placeholder": "main",
+-    "project.structure.last.edited": "SDKs",
+-    "project.structure.proportion": "0.15332031",
+-    "project.structure.side.proportion": "0.2"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
++    &quot;project.structure.proportion&quot;: &quot;0.15332031&quot;,
++    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+       <recent name="" />
+     </key>
+   </component>
+-  <component name="RunManager" selected="TestNG./Users/alikhanzhanybekov/IdeaProjects/nopcommerce/src/test/java/xml/US_03.xml">
++  <component name="RunManager" selected="TestNG.US_05_Gift01.hediye">
++    <configuration name="US_05_Gift01.hediye" type="TestNG" temporary="true" nameIsGenerated="true">
++      <module name="nopcommerce" />
++      <option name="PACKAGE_NAME" value="" />
++      <option name="MAIN_CLASS_NAME" value="US_05_Gift01" />
++      <option name="METHOD_NAME" value="hediye" />
++      <option name="TEST_OBJECT" value="METHOD" />
++      <properties />
++      <listeners />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
+     <configuration name="/Users/alikhanzhanybekov/IdeaProjects/nopcommerce/src/test/java/xml/US_02.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+       <module name="nopcommerce" />
+       <option name="SUITE_NAME" value="$PROJECT_DIR$/src/test/java/xml/US_02.xml" />
+@@ -98,6 +112,7 @@
+     </configuration>
+     <recent_temporary>
+       <list>
++        <item itemvalue="TestNG.US_05_Gift01.hediye" />
+         <item itemvalue="TestNG./Users/alikhanzhanybekov/IdeaProjects/nopcommerce/src/test/java/xml/US_03.xml" />
+         <item itemvalue="TestNG./Users/alikhanzhanybekov/IdeaProjects/nopcommerce/src/test/java/xml/US_02.xml" />
+         <item itemvalue="TestNG./Users/alikhanzhanybekov/IdeaProjects/nopcommerce/src/test/java/xml/US_03.xml" />
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"MavenProjectsManager\">\r\n    <option name=\"originalFiles\">\r\n      <list>\r\n        <option value=\"$PROJECT_DIR$/pom.xml\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_20\" default=\"true\" project-jdk-name=\"20\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	
++++ b/.idea/misc.xml	
+@@ -8,7 +8,7 @@
+       </list>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_20" default="true" project-jdk-name="20" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_20" default="true" project-jdk-name="corretto-20" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+ </project>
+\ No newline at end of file
