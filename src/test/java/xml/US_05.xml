@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="US_05">
+    <test name="mesaj1">
+        <parameter name="mesaj" value="Kader"/>
+        <classes>
+            <class name="tests.US_05_Gift01"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="mesaj2">
+        <parameter name="mesaj" value="Taş"/>
+        <classes>
+            <class name="tests.US_05_Gift01"/>
+        </classes>
+    </test>
+</suite> <!-- Suite -->
